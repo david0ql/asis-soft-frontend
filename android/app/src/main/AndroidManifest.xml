@@ -1,9 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.asist_soft">
+    package="com.nordikhat.studio1900web">
+     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="asist_soft"
+        android:label="Asist Soft"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"

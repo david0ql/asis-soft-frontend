@@ -6,6 +6,7 @@ import 'package:asist_soft/src/user_preferences/user_preferences.dart';
 import 'package:asist_soft/src/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:platform_device_id/platform_device_id.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -146,9 +147,14 @@ class _LoginContainerState extends State<_LoginContainer> {
 
   Future loginAction(
       TextEditingController user, TextEditingController pwd) async {
+    String deviceId = await PlatformDeviceId.getDeviceId ?? "null";
     final httpRequest = await http.post(
         Uri.parse("https://byteco.tecnopymes.net/public/api_login"),
-        body: {'email': user.text, 'password': pwd.text});
+        body: {
+          'email': user.text,
+          'password': pwd.text,
+          'deviceId': deviceId,
+        });
     return jsonDecode(httpRequest.body);
   }
 }

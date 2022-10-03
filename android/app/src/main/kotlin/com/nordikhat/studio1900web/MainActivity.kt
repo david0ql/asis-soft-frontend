@@ -1,4 +1,4 @@
-package com.example.asist_soft
+package com.nordikhat.studio1900web
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -18,8 +18,15 @@ class _TabScannerState extends State<TabScanner> {
     final userService = Provider.of<UserService>(context);
     return Scaffold(
       appBar: AppBar(
-          title: const Center(
-        child: Text("MIS ASISTENCIAS"),
+          title: GestureDetector(
+        onLongPress: () {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text("Creado por Johan y David"),
+          ));
+        },
+        child: const Center(
+          child: FittedBox(child: Text("MIS ASISTENCIAS")),
+        ),
       )),
       body: SafeArea(
         child: FutureBuilder(
@@ -56,14 +63,20 @@ class _TabScannerState extends State<TabScanner> {
         elevation: 8,
         child: Container(
           margin: const EdgeInsets.all(10),
-          child: Column(children: [
-            Text(
-              "Nombre: ${plataforma.nombre}",
-              style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
-            ),
-            Text("Hora de llegada: ${plataforma.fecha}",
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            FittedBox(
+              child: Text(
+                "Nombre: ${plataforma.nombre}",
                 style:
-                    const TextStyle(fontSize: 25, fontWeight: FontWeight.w300))
+                    const TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
+              ),
+            ),
+            FittedBox(
+              child: Text("Hora de llegada: ${plataforma.fecha}",
+                  style: const TextStyle(
+                      fontSize: 25, fontWeight: FontWeight.w300)),
+            )
           ]),
         ),
       ),
